@@ -25,15 +25,16 @@ steps:
 
 - task: Gradle@2
   inputs:
-    workingDirectory: ''
     gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
+    tasks: 'build'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: true
+    sqGradlePluginVersionChoice: 'specify'
+    sonarQubeGradlePluginVersion: '2.6.1'
 
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
