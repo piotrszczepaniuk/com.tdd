@@ -10,6 +10,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud-service-connection'
+    organization: 'piotrszczepaniuk-1'
+    scannerMode: 'MSBuild'
+    projectKey: 'piotrszczepaniuk_com.tdd'
+    projectName: 'com.tdd'
+
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -21,3 +30,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
+
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
