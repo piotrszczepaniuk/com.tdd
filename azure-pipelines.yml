@@ -18,6 +18,12 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'piotrszczepaniuk_com.tdd'
     projectName: 'com.tdd'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.sources=src/main/
+      sonar.testExecutionReportPaths=src/test/
 
 - task: Gradle@2
   inputs:
