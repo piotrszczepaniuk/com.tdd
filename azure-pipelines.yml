@@ -15,7 +15,7 @@ steps:
   inputs:
     SonarCloud: 'sonarcloud-service-connection'
     organization: 'piotrszczepaniuk-1'
-    scannerMode: 'MSBuild'
+    scannerMode: 'Other'
     projectKey: 'piotrszczepaniuk_com.tdd'
     projectName: 'com.tdd'
     extraProperties: |
