@@ -31,7 +31,7 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     testRunTitle: 'com.tdd.tests'
     codeCoverageToolOption: 'JaCoCo'
-    codeCoverageClassFilesDirectories: 'build/classes/main/'
+    codeCoverageClassFilesDirectories: 'build/reports/tests/jacoco'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     gradleOptions: '-Xmx3072m'
@@ -41,9 +41,9 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/site/jacoco/jacoco.xml'
+    summaryFileLocation: 'build/reports/tests/jacoco/jacoco.xml'
     pathToSources: '$(System.DefaultWorkingDirectory)/src/main/java'
-    additionalCodeCoverageFiles: '$(System.DefaultWorkingDirectory)/target/jacoco.exec'
+    additionalCodeCoverageFiles: 'build/reports/tests/jacoco/jacoco.exec'
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
