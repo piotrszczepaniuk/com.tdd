@@ -38,7 +38,12 @@ steps:
     sonarQubeRunAnalysis: true
     sqGradlePluginVersionChoice: 'specify'
     sonarQubeGradlePluginVersion: '2.6.1'
-
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/site/jacoco/jacoco.xml'
+    pathToSources: '$(System.DefaultWorkingDirectory)/src/main/java'
+    additionalCodeCoverageFiles: '$(System.DefaultWorkingDirectory)/target/jacoco.exec'
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
